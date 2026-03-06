@@ -31,6 +31,30 @@ background-attachment: fixed;
     unsafe_allow_html=True,
 )
 
+# ADD THIS HERE
+st.markdown("""
+<style>
+h1, h2, h3, h4, h5, h6 {color:white !important;}
+label {color:white !important;}
+.stTextInput label {color:white !important;}
+.stSelectbox label {color:white !important;}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown(
+    f"""
+<style>
+[data-testid="stAppViewContainer"] {{
+background-image: url("data:image/png;base64,{img}");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+}}
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
 # ---------- Login ----------
 if "login" not in st.session_state:
     st.session_state.login = False
@@ -64,5 +88,6 @@ else:
 
     elif dashboard == "Dashboard 3":
         st.image(d3, use_container_width=True)
+
 
 
