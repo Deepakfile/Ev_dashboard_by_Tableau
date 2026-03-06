@@ -1,17 +1,27 @@
 import streamlit as st
 import base64
+from pathlib import Path
 
 st.set_page_config(page_title="EV Dashboard", layout="wide")
 
-# ---------- Background Image ----------
+# ---------- Paths (GitHub friendly) ----------
+BASE_DIR = Path(__file__).parent
+IMG_DIR = BASE_DIR / "images"
+
+bg_image = IMG_DIR / "ev_bg.png"
+d1 = IMG_DIR / "dashboard1.png"
+d2 = IMG_DIR / "dashboard2.png"
+d3 = IMG_DIR / "dashboard3.png"
+
+# ---------- Background ----------
 def get_base64(file):
     with open(file, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+        return base64.b64encode(f.read()).decode()
 
-img = get_base64("ev_bg.png")
+img = get_base64(bg_image)
 
-page_bg = f"""
+st.markdown(
+    f"""
 <style>
 [data-testid="stAppViewContainer"] {{
 background-image: url("data:image/png;base64,{img}");
@@ -20,8 +30,9 @@ background-position: center;
 background-attachment: fixed;
 }}
 </style>
-"""
-st.markdown(page_bg, unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 # ---------- Login ----------
 if "login" not in st.session_state:
@@ -41,18 +52,18 @@ if not st.session_state.login:
             st.error("Invalid login")
 
 else:
-    st.title("Electric Vehicle Dashboard")
+    st.title("Electric Vehicle Analytics")
 
-    option = st.selectbox(
+    dashboard = st.selectbox(
         "Select Dashboard",
         ["Dashboard 1", "Dashboard 2", "Dashboard 3"]
     )
 
-    if option == "Dashboard 1":
-        st.image("dashboard1.png", use_container_width=True)
+    if dashboard == "Dashboard 1":
+        st.image(d1, use_container_width=True)
 
-    elif option == "Dashboard 2":
-        st.image("dashboard2.png", use_container_width=True)
+    elif dashboard == "Dashboard 2":
+        st.image(d2, use_container_width=True)
 
-    elif option == "Dashboard 3":
-        st.image("dashboard3.png", use_container_width=True)
+    elif dashboard == "Dashboard 3":
+        st.image(d3, use_container_width=True)
