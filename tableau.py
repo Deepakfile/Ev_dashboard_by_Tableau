@@ -4,6 +4,7 @@ from pathlib import Path
 
 st.set_page_config(page_title="EV Dashboard", layout="wide")
 
+# ---------- Background ----------
 BASE_DIR = Path(__file__).parent
 bg_image = BASE_DIR / "tab_bck.png"
 
@@ -28,7 +29,7 @@ color:white !important;
 </style>
 """, unsafe_allow_html=True)
 
-
+# ---------- Login ----------
 if "login" not in st.session_state:
     st.session_state.login = False
 
@@ -46,7 +47,7 @@ if not st.session_state.login:
         else:
             st.error("Invalid Login")
 
-
+# ---------- Main App ----------
 else:
 
     st.title("Electric Vehicle Analytics")
@@ -57,15 +58,15 @@ else:
     )
 
     if page == "Dashboard 1":
-        url = "https://public.tableau.com/shared/YQ45N33X8?:display_count=n&:origin=viz_share_link"
+        url = "https://public.tableau.com/views/YQ45N33X8/Dashboard1?:showVizHome=no&:embed=true"
 
     elif page == "Dashboard 2":
-        url = "https://public.tableau.com/views/EV_project_D2/Dashboard3?:language=en-US&publish=yes&:display_count=n"
+        url = "https://public.tableau.com/views/EV_project_D2/Dashboard3?:showVizHome=no&:embed=true"
 
     elif page == "Dashboard 3":
-        url = "https://public.tableau.com/views/EV_project_D3/Dashboard4?:language=en-US&publish=yes&:display_count=n"
+        url = "https://public.tableau.com/views/EV_project_D3/Dashboard4?:showVizHome=no&:embed=true"
 
     else:
-        url = "https://public.tableau.com/views/EV_project_Story/EVcarsinIndia?:language=en-US&publish=yes&:display_count=n"
+        url = "https://public.tableau.com/views/EV_project_Story/EVcarsinIndia?:showVizHome=no&:embed=true"
 
-    st.components.v1.iframe(url, height=850, width=1400)
+    st.components.v1.iframe(url, height=900, width=1400)
