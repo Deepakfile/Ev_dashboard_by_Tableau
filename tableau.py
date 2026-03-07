@@ -69,7 +69,8 @@ else:
     col1, col2 = st.columns([2,1])
 
     with col1:
-        st.components.v1.iframe(url, height=900, width=1700)
+        st.components.v1.iframe(url, height=1100, width=1700)
+
 
 
 
