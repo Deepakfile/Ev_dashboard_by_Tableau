@@ -51,16 +51,16 @@ else:
 
     page = st.selectbox(
         "Select Page",
-        ["Dashboard 1","Dashboard 2","Dashboard 3","Story Page"]
+        ["EV Charging Behavior and Infrastructure Planning Insights","EV Battery Performance and Driving Range Optimization","Comparative Analysis of Electric Vehicle Efficiency and Cost","EV Ecosystem Analysis in India"]
     )
 
-    if page == "Dashboard 1":
+    if page == "EV Charging Behavior and Infrastructure Planning Insights":
         url = "https://public.tableau.com/views/EV_projectD1/Dashboard2?:showVizHome=no&:embed=true"
 
-    elif page == "Dashboard 2":
+    elif page == "EV Battery Performance and Driving Range Optimization":
         url = "https://public.tableau.com/views/EV_project_D2/Dashboard3?:showVizHome=no&:embed=true"
 
-    elif page == "Dashboard 3":
+    elif page == "Comparative Analysis of Electric Vehicle Efficiency and Cost":
         url = "https://public.tableau.com/views/EV_project_D3/Dashboard4?:showVizHome=no&:embed=true"
 
     else:
@@ -70,6 +70,7 @@ else:
 
     with col1:
         st.components.v1.iframe(url, height=900, width=1700)
+
 
 
 
